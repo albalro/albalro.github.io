@@ -5,7 +5,7 @@ parent: Certification System
 nav_order: 1
 ---
 
-![](../../assets/images/cert-image.jpg)
+![](../../../assets/images/cert-image.jpg)
 
 <div align="center">
     <img src="../../../assets/images/cert-image.jpg" width="100px"> 
