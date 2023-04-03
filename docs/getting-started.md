@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: Getting started
 nav_order: 2
 ---
 

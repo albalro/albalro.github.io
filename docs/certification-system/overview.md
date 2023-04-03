@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Overview
+title: Certification System
 nav_order: 3
 has_children: true
 permalink: /docs/certification-service

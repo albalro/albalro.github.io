@@ -1,6 +1,6 @@
 ---
 layout: default
 title: API
-parent: Overview
+parent: Certification System
 nav_order: 2
 ---
