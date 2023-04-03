@@ -5,7 +5,11 @@ parent: Certification System
 nav_order: 1
 ---
 
-![](../../assets/images/cert-image.png)
+<!-- ![](../../assets/images/cert-image.png) -->
+
+<div align="center">
+    <img src="../../assets/images/cert-image.png" width="100px"> 
+</div>
 
 # Certification service
 
