@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Microservice
 parent: Certification System
 nav_order: 1
@@ -30,13 +30,6 @@ The microservice responsible for getting a grade for each API.
 API Certification is the microservice responsible for getting a grade for each API. It has several modules to certify different aspects of each API and calculate a final score for them using a weighted average.
 
 This open-source API-First-based certification service evaluates your APIs according to a set of rules that the user can customize.
-
-This service is the heart of a certification system, compounded by the following: 
-
-- Certificator - This service. 
-- [Rulesets](link) - A compound of rules that can replace and extend the default rules. 
-- [apicli](link) - The CLI that interacts with it.
-- [API hub](link) - The tools that help you design your APIs.
 
 {: .note }
 The microservice has a set of rules that are in the system **by default**. In addition, you can sync it with the [rulesets repository](link) to override the service default rules with a more-complete set.
@@ -101,245 +94,26 @@ Deploy the service following these steps:
 
 You can make use of this service by just making a request to its [API](Link-a-la-API-en-el-repo) or, even better, using the [apicli](Link-al-repo) CLI tool that we have developed for this matter.
 
+[Check the API](Link-a-la-API-en-el-repo){: .btn .btn-green .ml-auto .mr-2 .mt-2 .mb-2}
+[Check the CLI](Link-al-repo){: .btn .btn-purple .mx-auto .mt-2 .mb-2}
 
-[Check the API](Link-a-la-API-en-el-repo){: .btn .btn-green .ml-auto .mr-2}
-[Check the CLI](Link-al-repo){: .btn .btn-purple .mr-auto}
-
-<br>
 
 You can also use the [API hub](link) set of tools from your IDE to help you design your API at the same time you validate it with the service. The API hub provides the rating of the modules evaluated on the [certification service](link), giving you real-time insights into what score to expect.
+{: .mb-4}
 
-Anyhow, let's talk about the available API endpoints (they are all documented in the API, though 🤠) 
-<!-- todo: link a Swagger. -->
+{: .highlight}
+You can check the **available enpoinds** in the [API](/certification-system/api/) section.
 
-- `[POST] /rulesets/refresh`: This operation overrides the default ruleset with a custom one with the same structure.
-  
-  E.g.:
-
-  ```
-  curl --location --request POST 'http://localhost:8080/apifirst/v1/rulesets/refresh'
-  ```
-- `[POST] /fileverify`: This verifies the retrieved file's content as long as it complies with the OpenAPI specification. 
-
-  E.g.:
-
-  ```
-  curl --location --request POST 'http://localhost:8080/apifirst/v1/file-verify' \--header 'Content-Type: multipart/form-data' \--header 'Accept: application/json' \--form 'url="https://raw.githubusercontent.com/..."' \--form 'apiProtocol="1"'
-  ```
-
-- `[POST] /validations`: This operation creates a validation result from a ZIP file (which should contain a repository) or from a repository URL. 
-
-  E.g.:
-
-  ```
-  curl --location --request POST 'http://localhost:8080/apifirst/v1/validations' \--header 'Content-Type: multipart/form-data' \--header 'Accept: application/json' \--form 'url="https://github.com/..."' \--form 'validationType="1"' \--form 'isVerbose="false"'
-  ```
-
-  > Take into account that you need the following repository structure to use the `validations` request with a ZIP:
-  > 
-  > ```
-  > ├── metadata.yml
-  > └── myApis
-  >     └── samples
-  >         ├── asyncapi-streams
-  >         │   ├── asyncapi.yml
-  >         │   ├── cart_lines_operations.avsc
-  >         │   └── lines_operations_event.avsc
-  >         └── rest
-  >             └── openapi-rest.yml
-  > ```
-  > 
-  > Being the `metadata.yml` a file that contains all APIs defined in the repo:
-  > 
-  > ```yml
-  > apis:
-  >  - name: # The API name
-  >    api-spec-type:   # API type: grpc, event, rest
-  >    definition-path: # Path to API folder
-  >    definition-file: # API definition file
-  > ```
-  > 
-  > For example:
-  > 
-  > ```yml
-  > apis:
-  >   - name: "REST Sample"
-  >     api-spec-type: rest
-  >     definition-path: myApis/samples/rest
-  >     definition-file: openapi-rest.yml
-  >   - name: "AsyncAPI Streams Sample"
-  >     api-spec-type: event
-  >     definition-path: myApis/samples/asyncapi-streams
-  >     definition-file: asyncapi.yml
-  > ```
+<br>
 
 ## Performance and configuration
 
-Now that you can ZIP a working directory, send it to the Certificator, and get a grade, you are probably wondering... How? 
-
 As you have previously read, the microservice works with a compound of rules. It can be the default one in this current repository, or the ones in the [Rulesets repository](link).
 
-<details>
-<summary>List of default rules in the microservice</summary>
 
-
-#### AsyncAPI
-`itx-spectral.yaml`
-
-<div class="markdown-preview-view">
-
-| Rule | Description |
-| --	| -- |
-| contact-email | Definition must have a contact email |
-| contact-url | Contact email should be a valid URI |
-| mandatory-description | Description must be present |
-| must-use-semantic-versioning | Version must be in semver |
-
-</div>
-
----
-
-#### Avro
-`itx-spectral.yaml`
-
-| Rule | Description |
-| --	| -- |
-| field-name-snake_case | All field names must match snake case pattern (e.g. snake_case) |
-| fields-doc | Definition `doc` must be present and non-empty string in all fields |
-| global-doc | Definition `doc` must be present and non-empty string in all types |
-| type-name-pascal-case | All type names must match PascalCase pattern |
-
----
-
-
-#### Documentation
-
-`/markdownlint/linting-rules/api-rules/`
-
-| Rule | Description |
-| --	| -- |
-| api-mandatory-about |	About section is mandatory|
-
----
-
-
-#### OpenAPI - REST
-
-`itx-spectral.yaml`
-
-| Rule | Description |
-| --	| -- |
-| contact-email | Definition must have a contact email |
-| contact-url	| Contact email should be a valid URI |
-| ensure-operations-summary | Put a summary in all operations |
-| openapi-version | OpenAPI version cannot be 3.1.X for the time being |
-
-<br>
-
-`security-spectral.yaml`
-
-| Rule | Description |
-| --	| -- |
-| array-required-properties | Array size should be limited to mitigate resource exhaustion attacks. This can be done using `maxItems` |
-
-<br>
-
-`rulesets/api-versions.yaml`
-
-| Rule | Description |
-| --	| -- |
-|must-use-semantic-versioning | All the API will be versioned following the Semantic Versioning definition |
-
-<br>
-
-`rulesets/examples.yaml`
-
-| Rule | Description |
-| --	| -- |
-| components-param-examples | Componente parameters must have examples |
-| ensure-properties-examples | Properties must have examples, description and type |
-| paths-param-examples | Parameters must have examples |
-
-<br>
-
-`http-status-code.yaml`
-
-| Rule | Description |
-| --	| -- |
-| delete-http-status-codes-resource | Each endpoint need to have defined the error codes |
-| error-response-definitions | Define errors in your API following our version of the Problem Details RFC7807 |
-| error-response-definitions-rfc7807-status	| Define errors in your API following our version of the Problem Details RFC7807 |
-| get-http-status-codes-collections | Each endpoint need to have defined the error codes |
-| get-http-status-codes-resource | Each endpoint need to have defined the error codes |
-| patch-http-status-codes-resource | Each endpoint need to have defined the error codes	 |
-| post-http-status-codes-collections | Each endpoint need to have defined the error codes |
-| post-http-status-codes-controller | Each endpoint need to have defined the error codes |
-| post-http-status-codes-resource | Each endpoint need to have defined the error codes |
-| put-http-status-codes-resource | Each endpoint need to have defined the error codes |
-| standard-http-status-codes | MUST use standard HTTP status codes |
-| well-understood-http-status-codes	 | HTTP response codes cannot be used on all HTTP verbs |
-
-<br>
-
-`path.yaml`
-
-| Rule | Description |
-| --	| -- |
-| path-parameters-camel-case | Path parameters should be camelCase |
-| paths-no-underscore| Paths should not contain underscores |
-| paths-uppercase	| Paths should not be in uppercase |
-| query-camel-case| Query parameters should be camelCase |
-
-<br>
-
-`properties.yaml`
-
-| Rule | Description |
-| --	| -- |
-| camel-case-for-properties | Use camelCase naming for attributes in request/responses and definitions |
-| dto-schema-name | You SHOULD avoid ending your schemas (..schemas[*]~) with suffixes like {dto,DTO,Dto} |
-
-<br>
-
-`security.yaml`
-
-| Rule | Description |
-| --	| -- |
-| allowed-auth-methods | The API operation uses HTTP authentication method that is not included in IANA Authentication Scheme Registry |
-| allowed-verbs | Use always HTTP verbs to refer to actions in urls |
-| array-required-properties | Array size should be limited to mitigate resource exhaustion attacks. This can be done using `maxItems` |
-| empty-schema | The schema is empty. This means that your API accepts any JSON values. Or payload does not have any properties defined |
-| empty-schema-headers | Define schemas for all header objects to restrict what input or output is allowed |
-| ensure-auth | Authentication SHOULD support Basic and Bearer type |
-| ensure-security-schemes | The security field of your API contract does not list any security schemes to be applied |
-| global-security | Use the security field on the global level to set the default authentication requirements for the whole API |
-| implicit-grant-oauth2 | Do not use implicit grant flow in OAuth2 authentication |
-| negotiate-auth | Do not use the security scheme negotiateAuth |
-| no-additional-properties-defined	 | While forbidding additionalProperties can create rigidity and hinder the evolution of an API - eg making it hard to accept new parameters or fields | it is possible that this flexibility can be used to bypass the schema validator and force the application to process unwanted information |
-| numeric-required-properties-max-min	 | Numeric values should be limited in size to mitigate resource exhaustion |
-| oauth1-auth | One or more global security schemes in your API allows using OAuth 1.0 authentication |
-| resource-owner-password-auth | The API operation uses resource owner password grant flow in OAuth2 authentication |
-| response-schema-defined | You have not defined any schemas for responses that should contain a body. Only acceptable if the returned HTTP status code is 204 or 304 (no content allowed for these codes), see RFC 7231 and RFC 7232 |
-| schema-mandatory-parameters | One or more parameters in your API do not have schemas defined. All parameters must have either schema or content defined to restrict what content your API accepts|
-| security-empty | One or more of the objects defined in the global security field contain an empty security requirement |
-| security-scopes-defined | OAuth2 security requirement requires a scope not declared in the referenced security scheme |
-| server-https | Set all server objects to support HTTPS only so that all traffic is encrypted |
-| string-parameters-required-maxLength | String should be limited and with a maxLength to avoid out of format inputs by attackers |
-| string-properties-required-maxLength | String should be limited and with a maxLength to avoid out of format inputs by attackers |
-
-
-
----
-												
-#### Proto
-
-| Rule | Description |
-| --	| -- |												
-| response-schema-not-defined | You have not defined any schemas for responses that should contain a body. Only acceptable if the returned HTTP status code is 204 or 304 (no content allowed for these codes), see RFC 7231 and RFC 7232 |
-
-</details>
-
-<br>
+<span class= "d-flex">
+  [Default rulesets](/certification-system/rulesets/){: .btn .mx-auto  .mt-2 .mb-2}
+</span>
 
 If an API doesn't break any rule, it gets an A+. If there are rules broken, this grade goes down accordingly. To calculate so, we have divided the scoring system into three modules (Design, Security, and Documentation) that assign grades on a letter scale from D to A<sup>+</sup>.
 
@@ -358,7 +132,6 @@ Each module is evaluated separately, and the global grade is calculated by takin
 <table>
 <tr><th>Weights for REST APIs </th><th>Weights for AsyncAPI and gRPC APIs</th></tr>
 <tr><td>
-
 <table>
   <thead>
     <tr> 
@@ -387,7 +160,6 @@ Each module is evaluated separately, and the global grade is calculated by takin
     </tr>
   </tbody>
 </table>
-
 </td><td>
 
 <table>
@@ -418,7 +190,6 @@ Each module is evaluated separately, and the global grade is calculated by takin
     </tr>
   </tbody>
 </table>
-
 </td></tr> </table>
 
 >*NOTE: For the Documentation module, different weights are assigned base and custom rules. To calculate the Documentation module score, the service operates with a weighted average of the two kinds of rules.*

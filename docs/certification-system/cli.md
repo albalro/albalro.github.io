@@ -2,7 +2,7 @@
 layout: default
 title: CLI
 parent: Certification System
-nav_order: 3
+nav_order: 4
 ---
 
 # Certification CLI
