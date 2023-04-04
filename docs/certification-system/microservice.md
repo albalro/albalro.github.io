@@ -1,32 +1,31 @@
 ---
-layout: default
+layout: page
 title: Microservice
 parent: Certification System
 nav_order: 1
 ---
 
-![](../../../assets/images/cert-image.jpg)
+# Certification service
+{: .no_toc }
 
-<div align="center">
-    <img src="../../../assets/images/cert-image.jpg" width="100px"> 
+The microservice responsible for getting a grade for each API.
+{: .fs-6 .fw-300 }
+
+<br>
+
+<div >
+    <img src="/certification-system/cert-image.png" width="20%" style="float: right;"> 
 </div>
 
-# Certification service
+## Table of contents
+{: .no_toc .text-delta }
 
-## Overview
+1. TOC
+{:toc}
 
-<!-- todo: update -->
+<br>
 
-- [📜 Summary](#-summary)
-- [⚙️ Installation](#%EF%B8%8F-installation)
-- [🧑‍🏭 Performance and configuration](#️-performance-and-configuration)
-- [🫂 Support](#-support)
-- [👏 Contributing](#-contributing)
-- [⚖️ License](#️%EF%B8%8F-license)
-<!-- - [📖 Documentation](#-documentation) -->
-
-
-## 📜 Summary
+## Summary
 
 API Certification is the microservice responsible for getting a grade for each API. It has several modules to certify different aspects of each API and calculate a final score for them using a weighted average.
 
@@ -39,15 +38,17 @@ This service is the heart of a certification system, compounded by the following
 - [apicli](link) - The CLI that interacts with it.
 - [API hub](link) - The tools that help you design your APIs.
 
-> *NOTE: The microservice has a set of rules that are in the system **by default**. In addition, you can sync it with the [rulesets repository](link) to override the service default rules with a more-complete set.*
+{: .note }
+The microservice has a set of rules that are in the system **by default**. In addition, you can sync it with the [rulesets repository](link) to override the service default rules with a more-complete set.
 
 We want to make it simple. In the end, each certified API will be broken down into a single grade, which will mean how well-design your API is. 
 
 If you want to know if your API complies with your design rules, if it addresses some of the OWASP vulnerabilities, and if it complies with documentation guidelines… this is your service.
 
-> _NOTE: Due to an [issue in protolint](https://github.com/yoheimuta/protolint/issues/144), the certification of gRPC APIs in Windows it is not possible_.
+{: .note }
+Due to an [issue in protolint](https://github.com/yoheimuta/protolint/issues/144), the certification of gRPC APIs in Windows it is not possible_.
 
-## ⚙️ Installation
+## Installation
 
 Know that we recommend the use of [Node v18.13.0](https://nodejs.org/es/blog/release/v18.13.0/) to work on this project. 
 
@@ -55,22 +56,30 @@ Deploy the service following these steps:
 
 1. Clone the repository:
 
-    `git clone git@github.com:inditex/mic-openapicertification.git`
+    ```zsh
+    git clone git@github.com:inditex/mic-openapicertification.git
+    ```
 
 2. Place yourself in it: 
 
-    `cd mic-openapicertification/packages` 
+    ```zsh
+    cd mic-openapicertification/packages
+    ```
 
 3. Install the dependencies: 
 
-    `npm install`
+    ```zsh
+    npm install
+    ```
 
 4. Optionally, add your GitHub credentials one of the following ways to be able to validate private repositories:
 
    - as environment variables:
 
-         CERWS_GH_USERNAME (GitHub username)
-         CERWS_GH_PASSWORD (GitHub personal access token)
+      ```zsh
+      CERWS_GH_USERNAME # GitHub username.
+      CERWS_GH_PASSWORD # GitHub personal access token.
+      ```
    - or in the [`configmap.yml` file](code/config/configmap.yml):
       ```yml
       cerws:
@@ -84,14 +93,23 @@ Deploy the service following these steps:
 
 5. Run the service: 
 
-    `npm start` 
+    ```bash
+    npm start
+    ``` 
+
+<br>
+
+You can make use of this service by just making a request to its [API](Link-a-la-API-en-el-repo) or, even better, using the [apicli](Link-al-repo) CLI tool that we have developed for this matter.
 
 
-You can make use of this service by just making a request to its [API](Link-a-la-API-en-el-repo) or, even better, using the [apicli](Link-al-repo) CLI tool that we have developed for this matter. 
+[Check the API](Link-a-la-API-en-el-repo){: .btn .btn-green .ml-auto .mr-2}
+[Check the CLI](Link-al-repo){: .btn .btn-purple .mr-auto}
+
+<br>
 
 You can also use the [API hub](link) set of tools from your IDE to help you design your API at the same time you validate it with the service. The API hub provides the rating of the modules evaluated on the [certification service](link), giving you real-time insights into what score to expect.
 
-Anyhow, let's talk about the available API endpoints (they are all documented in the API, though:cowboy_hat_face:) 
+Anyhow, let's talk about the available API endpoints (they are all documented in the API, though 🤠) 
 <!-- todo: link a Swagger. -->
 
 - `[POST] /rulesets/refresh`: This operation overrides the default ruleset with a custom one with the same structure.
@@ -155,7 +173,7 @@ Anyhow, let's talk about the available API endpoints (they are all documented in
   >     definition-file: asyncapi.yml
   > ```
 
-## 🧑‍🏭 Performance and configuration
+## Performance and configuration
 
 Now that you can ZIP a working directory, send it to the Certificator, and get a grade, you are probably wondering... How? 
 
@@ -325,7 +343,6 @@ As you have previously read, the microservice works with a compound of rules. It
 
 If an API doesn't break any rule, it gets an A+. If there are rules broken, this grade goes down accordingly. To calculate so, we have divided the scoring system into three modules (Design, Security, and Documentation) that assign grades on a letter scale from D to A<sup>+</sup>.
 
-<div align="center">
 
 | Score | Letter |
 |:---:|:---:|
@@ -335,7 +352,6 @@ If an API doesn't break any rule, it gets an A+. If there are rules broken, this
 |50 - 74|C|
 |0 - 49|D|
 
-</div>
 
 Each module is evaluated separately, and the global grade is calculated by taking a weighted average of the grades from the different modules.
 
