@@ -151,7 +151,7 @@ TO DO
 | global-security | Use the security field on the global level to set the default authentication requirements for the whole API |
 | implicit-grant-oauth2 | Do not use implicit grant flow in OAuth2 authentication |
 | negotiate-auth | Do not use the security scheme negotiateAuth |
-| no-additional-properties-defined	 | While forbidding additionalProperties can create rigidity and hinder the evolution of an API - eg making it hard to accept new parameters or fields | it is possible that this flexibility can be used to bypass the schema validator and force the application to process unwanted information |
+| no-additional-properties-defined	 | While forbidding additionalProperties can create rigidity and hinder the evolution of an API - eg making it hard to accept new parameters or fields. It is possible that this flexibility can be used to bypass the schema validator and force the application to process unwanted information |
 | numeric-required-properties-max-min	 | Numeric values should be limited in size to mitigate resource exhaustion |
 | oauth1-auth | One or more global security schemes in your API allows using OAuth 1.0 authentication |
 | resource-owner-password-auth | The API operation uses resource owner password grant flow in OAuth2 authentication |

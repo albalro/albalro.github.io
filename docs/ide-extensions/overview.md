@@ -46,7 +46,21 @@ For these tools to work, **you must deploy the Certificator service**: the main 
 
 ## SPA deployment
 
-<!-- todo -->
+You need to have the SPA running so that the extensions are working seamesly. To do so, you need to deploy the SPA locally with the following commands:
+
+1. Install the dependencies
+
+{: .ml-4}
+```bash
+npm install
+```
+
+2. Start the service locally
+
+{: .ml-4}
+```bash
+npm run start
+```
 
 ## Installation
 

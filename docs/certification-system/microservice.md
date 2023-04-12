@@ -115,6 +115,9 @@ As you have previously read, the microservice works with a compound of rules. It
   [Default rulesets](/certification-system/rulesets/){: .btn .mx-auto  .mt-2 .mb-2}
 </span>
 
+
+### Scoring
+
 If an API doesn't break any rule, it gets an A+. If there are rules broken, this grade goes down accordingly. To calculate so, we have divided the scoring system into three modules (Design, Security, and Documentation) that assign grades on a letter scale from D to A<sup>+</sup>.
 
 
@@ -129,14 +132,6 @@ If an API doesn't break any rule, it gets an A+. If there are rules broken, this
 
 Each module is evaluated separately, and the global grade is calculated by taking a weighted average of the grades from the different modules.
 
-| Module | Weight |
-|:---:|:---:|
-|100|A<sup>+</sup>|
-|90 - 99|A|
-|75 - 89|B|
-|50 - 74|C|
-|0 - 49|D|
-
 
 <table>
   <thead>
@@ -147,16 +142,16 @@ Each module is evaluated separately, and the global grade is calculated by takin
   </thead>
   <tbody>
     <tr>
-      <td colspan="2">Desing</td>
-      <td colspan="2">0.4</td>
+      <td colspan="2">Design</td>
+      <td colspan="2" style="text-align: center;">0.4</td>
     </tr>
     <tr>
       <td colspan="2">Security</td>
-      <td colspan="2">0.45</td>
+      <td colspan="2" style="text-align: center;">0.45</td>
     </tr>
     <tr>
-      <th rowspan="4">Documentation</th>
-      <td rowspan="4">0.15</td>
+      <td rowspan="2">Documentation</td>
+      <td rowspan="2">0.15</td>
       <th>Convention rules</th>
       <td>0.30</td>
     </tr>
@@ -178,14 +173,14 @@ Each module is evaluated separately, and the global grade is calculated by takin
   <tbody>
     <tr>
       <td colspan="2">Design</td>
-      <td colspan="2">0.85</td>
+      <td colspan="2" style="text-align: center;">0.85</td>
     </tr>
     <tr>
       <td colspan="2">Security</td>
-      <td colspan="2">N/A</td>
+      <td colspan="2" style="text-align: center;">N/A</td>
     </tr>
     <tr>
-      <th rowspan="4">Documentation</th>
+      <td rowspan="4">Documentation</td>
       <td rowspan="4">0.15</td>
       <th>Convention rules</th>
       <td>0.30 </td>
@@ -196,6 +191,8 @@ Each module is evaluated separately, and the global grade is calculated by takin
     </tr>
   </tbody>
 </table>
+
+
 
 
 {: .note}
@@ -209,8 +206,11 @@ Each module's rules can be whether warnings, errors, or information. The breach 
 
 A correction factor is added for error-type rules breach, assigning them a higher weight.
 
-> *NOTE: For more information regarding the scoring, check the [Scoring.md](/Scoring.md) file!*
+{: .highlight}
+For more information regarding the scoring, check the [Scoring.md](/Scoring.md) file!
 
+
+### Customization
 
 You can **modify the score calculation** by adjusting some parameters in the [`configmap.yml` file](code/config/configmap.yml) :
 
@@ -260,26 +260,10 @@ Once you install and deploy the service as explained in the [⚙️ Installation
 * You can also use the [apicli](link) tool to update the rulesets with the [Rulesets](link) repository with a CLI command.
 
 
-### Custom rules
+### New rules creation
 
 The Certificator rules are based on different linters depending on the files that are linting. If you want to create your own rules, you should follow each linter's documentation:
 
 - For OpenAPI/AsyncAPI, follow [Spectral documentation](https://docs.stoplight.io/docs/spectral/01baf06bdd05a-create-a-ruleset).
 - For documentation files, follow [markdownlint documentation](https://github.com/DavidAnson/markdownlint/blob/main/doc/CustomRules.md).
 - For gRPC, follow [protolint documentation](https://github.com/yoheimuta/protolint/tree/d19308920340bcaf80064c65d24a818d12b3fb71#creating-your-custom-rules).
-
-
-## 🫂 Support 
-
-If you have any kind of doubts regarding Certificator, don't hesitate to [contact us](email)! We are delighted to help. 
-
-
-## 👏 Contributing 
-
-You are always welcome to contribute to this project! Please have a look at the [contribution guidelines](contributing-file) before getting to code. 
-
-(example of file: https://github.com/athityakumar/colorls/blob/main/CONTRIBUTING.md) 
-
-## ⚖️ License 
-
-TBD 
