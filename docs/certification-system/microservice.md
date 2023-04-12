@@ -129,8 +129,18 @@ If an API doesn't break any rule, it gets an A+. If there are rules broken, this
 
 Each module is evaluated separately, and the global grade is calculated by taking a weighted average of the grades from the different modules.
 
+| Module | Weight |
+|:---:|:---:|
+|100|A<sup>+</sup>|
+|90 - 99|A|
+|75 - 89|B|
+|50 - 74|C|
+|0 - 49|D|
+
+
 <table>
 <tr><th>Weights for REST APIs </th><th>Weights for AsyncAPI and gRPC APIs</th></tr>
+
 <tr><td>
 <table>
   <thead>
@@ -192,7 +202,8 @@ Each module is evaluated separately, and the global grade is calculated by takin
 </table>
 </td></tr> </table>
 
->*NOTE: For the Documentation module, different weights are assigned base and custom rules. To calculate the Documentation module score, the service operates with a weighted average of the two kinds of rules.*
+{: .note}
+For the Documentation module, different weights are assigned base and custom rules. To calculate the Documentation module score, the service operates with a weighted average of the two kinds of rules.*
 
 Each module's rules can be whether warnings, errors, or information. The breach of each of them means:
 
