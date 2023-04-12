@@ -139,10 +139,6 @@ Each module is evaluated separately, and the global grade is calculated by takin
 
 
 <table>
-<tr><th>Weights for REST APIs </th><th>Weights for AsyncAPI and gRPC APIs</th></tr>
-
-<tr><td>
-<table>
   <thead>
     <tr> 
       <th colspan="2">Module</th>
@@ -162,7 +158,7 @@ Each module is evaluated separately, and the global grade is calculated by takin
       <th rowspan="4">Documentation</th>
       <td rowspan="4">0.15</td>
       <th>Convention rules</th>
-      <td>0.30 </th>
+      <td>0.30</td>
     </tr>
     <tr>
       <th>Custom rules</th>
@@ -170,7 +166,7 @@ Each module is evaluated separately, and the global grade is calculated by takin
     </tr>
   </tbody>
 </table>
-</td><td>
+
 
 <table>
   <thead>
@@ -192,7 +188,7 @@ Each module is evaluated separately, and the global grade is calculated by takin
       <th rowspan="4">Documentation</th>
       <td rowspan="4">0.15</td>
       <th>Convention rules</th>
-      <td>0.30 </th>
+      <td>0.30 </td>
     </tr>
     <tr>
       <th>Custom rules</th>
@@ -200,7 +196,7 @@ Each module is evaluated separately, and the global grade is calculated by takin
     </tr>
   </tbody>
 </table>
-</td></tr> </table>
+
 
 {: .note}
 For the Documentation module, different weights are assigned base and custom rules. To calculate the Documentation module score, the service operates with a weighted average of the two kinds of rules.*
