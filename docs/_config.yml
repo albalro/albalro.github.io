@@ -126,7 +126,7 @@ back_to_top_text: "Back to top"
 
 
 # Changing the markdown render
-markdown: GFM
+markdown: kramdown
 
 
 
