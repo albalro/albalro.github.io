@@ -1,7 +1,7 @@
 ---
 layout: page
 title: CONTRIBUTING
-nav_order: 6
+nav_order: 5
 ---
 
 # Contribution guidelines
