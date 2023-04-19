@@ -5,7 +5,7 @@ parent: Certification System
 nav_order: 3
 ---
 
-# Certification API
+# Certification **API**
 {: .no_toc }
 
 Let's talk about the available API endpoints, even though they are all documented in the API itself! 🤠 

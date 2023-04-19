@@ -9,6 +9,7 @@ nav_order: 2
 {: .no_toc }
 
 The extension that focuses on establishing a ruleset file where you can find the compromised rule and fix it.
+{: .fs-6 .fw-300 }
 
 ## Table of contents
 {: .no_toc .text-delta }

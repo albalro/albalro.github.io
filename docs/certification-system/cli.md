@@ -5,7 +5,7 @@ parent: Certification System
 nav_order: 4
 ---
 
-# Certification CLI
+# Certification **CLI**
 {: .no_toc }
 
 With `apicli`, you can make requests to the certification system and get your API a grade.

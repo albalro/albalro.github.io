@@ -18,5 +18,5 @@ The Certification System is based on the following pieces:
 - [x] **API CLI** - The CLI that interacts with the service from terminal.
 
 <span class= "d-flex mt-10">
-  [<img src="/certification-system/github-logo-gradient.png" width="30px" style="vertical-align: middle;"> Check the repo!](https://github.com/inditex/mic-openapicertification){: .btn .mx-auto  .mt-2 .mb-2}
+  [<img src="/certification-system/github-logo-gradient.png" width="30px" style="vertical-align: middle;"> Check the repository!](https://github.com/inditex/mic-openapicertification){: .btn .mx-auto  .mt-2 .mb-2}
 </span>
