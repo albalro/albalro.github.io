@@ -106,6 +106,6 @@ To certify with a custom YML file, you should:
    ```
 
 {: .note}
-Notice that you can add Javascript functions to the YAML file, which will enrich the power of your ruleset! For further information, you have displayed a complete example in [this repository](https://github.com/inditex/cac-apifirst/tree/main/rules/file-rules/example).
+Notice that you can add Javascript functions to the YAML file, which will enrich the power of your ruleset!
 
 <!-- todo: update link -->

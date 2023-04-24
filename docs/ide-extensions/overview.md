@@ -18,8 +18,6 @@ The set of extensions that integrates the API-design essential tools into their 
 
 <br>
 
-<!-- todo: update -->
-
 ## Table of contents
 {: .no_toc .text-delta }
 

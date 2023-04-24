@@ -11,9 +11,6 @@ nav_order: 4
 With `apicli`, you can make requests to the certification system and get your API a grade.
 {: .fs-6 .fw-300 }
 
-{: .new}
-Don't know what the API Certification system is? No worries. You can check it out [here](link-a-api-cert)! 🤓
-
 <br>
 
 ## Table of contents

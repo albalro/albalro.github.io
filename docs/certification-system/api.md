@@ -41,7 +41,7 @@ This **POST** operation verifies the retrieved file's content as long as it comp
 E.g.:
 
 ```bash
-curl --location --request POST 'http://localhost:8080/apifirst/v1/file-verify' \--header 'Content-Type: multipart/form-data' \--header 'Accept: application/json' \--form 'url="https://raw.githubusercontent.com/..."' \--form 'apiProtocol="1"'
+curl --location --request POST 'http://localhost:8080/apifirst/v1/file-verify-protocol' \--header 'Content-Type: multipart/form-data' \--header 'Accept: application/json' \--form 'url="https://raw.githubusercontent.com/..."' \--form 'apiProtocol="1"'
 ```
 </div>
 
