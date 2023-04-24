@@ -38,6 +38,10 @@ To work, the API hub uses an in-IDE-integrated SPA, that displays visual informa
 
 In the **VS Code**, you can take advantage of the [Spectral quick fix](#spectral-quick-fix) plugin to easily correct the linted errors. See in the previous gif how errors are corrected with a click!
 
+<span class= "d-flex mt-5">
+  [<img src="/certification-system/github-logo-gradient.png" width="30px" style="vertical-align: middle;"> Check the repository!](https://github.com/inditex/cac-opencertificationplugins){: .btn .mx-auto  .mt-2 .mb-4}
+</span>
+
 {: .note}
 For these tools to work, **you must deploy the Certification microservice**: the main piece of the certification system. Learn how in the [documentation](link).
 

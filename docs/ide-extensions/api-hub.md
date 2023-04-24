@@ -107,5 +107,3 @@ To certify with a custom YML file, you should:
 
 {: .note}
 Notice that you can add Javascript functions to the YAML file, which will enrich the power of your ruleset!
-
-<!-- todo: update link -->
