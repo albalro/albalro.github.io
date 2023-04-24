@@ -17,7 +17,7 @@ A tool that establishes communication between a certification web and the files 
 1. TOC
 {:toc}
 
-This extension emerges from the need for a tool that combines the power of [Certificator](link) and the power of IDEs.
+This extension emerges from the need for a tool that combines the power of the certification service and the power of IDEs.
 
 This web can be used as a web itself or integrated into the IDE through an iFrame format.
 

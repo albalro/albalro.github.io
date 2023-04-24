@@ -322,7 +322,7 @@ Once you install and deploy the service as explained in the [⚙️ Installation
 ### New rules creation
 {: .mt-8}
 
-The Certificator rules are based on different linters depending on the files that are linting. If you want to create your own rules, you should follow each linter's documentation:
+The certification rules are based on different linters depending on the files that are linting. If you want to create your own rules, you should follow each linter's documentation:
 
 - For OpenAPI/AsyncAPI, follow [Spectral documentation](https://docs.stoplight.io/docs/spectral/01baf06bdd05a-create-a-ruleset).
 - For documentation files, follow [markdownlint documentation](https://github.com/DavidAnson/markdownlint/blob/main/doc/CustomRules.md).

@@ -39,20 +39,37 @@ To work, the API hub uses an in-IDE-integrated SPA, that displays visual informa
 In the **VS Code**, you can take advantage of the [Spectral quick fix](#spectral-quick-fix) plugin to easily correct the linted errors. See in the previous gif how errors are corrected with a click!
 
 {: .note}
-For these tools to work, **you must deploy the Certificator service**: the main piece of the certification system. Learn how in the [documentation](link).
+For these tools to work, **you must deploy the Certification microservice**: the main piece of the certification system. Learn how in the [documentation](link).
 
 ## SPA deployment
 
 You need to have the SPA running so that the extensions are working seamesly. To do so, you need to deploy the SPA locally with the following commands:
 
-1. Install the dependencies
+1. Clone the repository:
 
 {: .ml-4}
 ```bash
-npm install
+git clone git@github.com:inditex/cac-opencertificationplugins.git
 ```
 
-2. Start the service locally
+
+2. Place yourself in the correct directory:
+
+{: .ml-4}
+```bash
+cd plugins/spa-apihub/code
+```
+
+
+3. Install the dependencies:
+
+{: .ml-4}
+```bash
+npm i
+```
+
+
+4. Once the process finishes, start the SPA:
 
 {: .ml-4}
 ```bash
@@ -65,3 +82,4 @@ To install the extensions, you just need to search for all the following extensi
 
 [VS Code Marketplace](https://marketplace.visualstudio.com/VSCode){: .btn .btn-blue .ml-auto .mr-2}
 [IntelliJ Marketplace](https://plugins.jetbrains.com/){: .btn .btn-purple .mr-auto}
+
